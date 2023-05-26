@@ -122,9 +122,9 @@ pub struct AerisWeatherResponseData {
 
 #[derive(Debug, Deserialize, Serialize)]
 pub struct AerisWeatherResponseWrapper{
-    success: bool,
-    error: Option<HashMap<String, String>>, // 'code' and 'description'
-    response: Vec<AerisWeatherResponseData>
+    pub success: bool,
+    pub error: Option<HashMap<String, String>>, // 'code' and 'description'
+    pub response: Vec<AerisWeatherResponseData>
 }
 
 
