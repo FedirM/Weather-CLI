@@ -1,15 +1,15 @@
 
 
 #[cfg(test)]
-mod aeris_weather_tests {
+mod open_weather_tests {
 
-    use super::super::aeris_weather::aeris_weather::*;
+    use super::super::open_weather::open_weather::*;
     use super::super::super::aw;
 
 
 
     #[test]
-    fn aeris_city_test() {
+    fn open_city_test() {
         let cc_data = WeatherRequestData {
             zip: None,
             city: Some("Dallas".to_lowercase())
@@ -17,7 +17,7 @@ mod aeris_weather_tests {
 
         match aw!(get(cc_data)) {
             Ok(res) => {
-                assert!(res.success)
+                assert_eq!(res.code.unwrap(), 200)
             },
             Err(_) => {
                 assert!(false)
@@ -28,7 +28,7 @@ mod aeris_weather_tests {
     }
     
     #[test]
-    fn aeris_zip_test() {
+    fn open_zip_test() {
         let cc_data = WeatherRequestData {
             zip: Some("75052".to_lowercase()),
             city: None
@@ -36,7 +36,7 @@ mod aeris_weather_tests {
 
         match aw!(get(cc_data)) {
             Ok(res) => {
-                assert!(res.success)
+                assert_eq!(res.code.unwrap(), 200)
             },
             Err(_) => {
                 assert!(false)
